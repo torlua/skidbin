@@ -1,200 +1,61 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RBXShare</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-
-<style>
-body {
-    margin: 0;
-    font-family: 'JetBrains Mono', monospace;
-    background: #0b0b0b;
-    color: #d0d0d0;
-}
-
-/* Sidebar */
-.sidebar {
-    position: fixed;
-    width: 230px;
-    height: 100%;
-    background: #0f0f0f;
-    border-right: 1px solid #1f1f1f;
-}
-
-.logo {
-    padding: 18px;
-    font-size: 18px;
-    color: #fff;
-    border-bottom: 1px solid #1a1a1a;
-}
-
-.nav a {
-    display: block;
-    padding: 12px 18px;
-    color: #888;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.nav a:hover {
-    background: #151515;
-    color: #fff;
-}
-
-/* Main */
-.main {
-    margin-left: 230px;
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #1a1a1a;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.search {
-    background: #0f0f0f;
-    border: 1px solid #1f1f1f;
-    padding: 8px;
-    color: #ccc;
-    width: 260px;
-}
-
-.button {
-    background: #111;
-    border: 1px solid #2a2a2a;
-    padding: 8px 12px;
-    color: #aaa;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.button:hover {
-    color: #fff;
-    border-color: #444;
-}
-
-/* Table style like doxbin */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-}
-
-.table th {
-    text-align: left;
-    padding: 10px;
-    color: #666;
-    border-bottom: 1px solid #1a1a1a;
-}
-
-.table td {
-    padding: 10px;
-    border-bottom: 1px solid #111;
-}
-
-.table tr:hover {
-    background: #111;
-}
-
-/* Upload box */
-.upload {
-    margin-top: 25px;
-    border: 1px solid #1a1a1a;
-    background: #0f0f0f;
-    padding: 15px;
-}
-
-.input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    background: #0b0b0b;
-    border: 1px solid #1f1f1f;
-    color: #ccc;
-}
-
-textarea {
-    width: 100%;
-    height: 160px;
-    background: #0b0b0b;
-    border: 1px solid #1f1f1f;
-    color: #ccc;
-    padding: 10px;
-    resize: none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="sidebar">
-    <div class="logo">RBXShare</div>
-    <div class="nav">
-        <a href="#">recent</a>
-        <a href="#">popular</a>
-        <a href="#">my files</a>
-        <a href="#">upload</a>
-    </div>
-</div>
-
-<div class="main">
-
-    <div class="header">
-        <input class="search" placeholder="search...">
-        <button class="button">new</button>
-    </div>
-
-    <table class="table" id="fileTable">
-        <thead>
-            <tr>
-                <th>title</th>
-                <th>user</th>
-                <th>date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>gun_system.lua</td>
-                <td>user123</td>
-                <td>today</td>
-            </tr>
-            <tr>
-                <td>radio_script.lua</td>
-                <td>devguy</td>
-                <td>today</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="upload">
-        <div style="margin-bottom:10px; color:#888;">upload script</div>
-        <input class="input" id="title" placeholder="title">
-        <textarea id="code" placeholder="paste lua code..."></textarea>
-        <button class="button" onclick="uploadScript()">upload</button>
-    </div>
-
-</div>
-
-<script>
-function uploadScript() {
-    const title = document.getElementById('title').value;
-    const table = document.getElementById('fileTable').getElementsByTagName('tbody')[0];
-
-    if (!title) return alert('enter title');
-
-    const row = table.insertRow(0);
-    row.innerHTML = `<td>${title}</td><td>you</td><td>now</td>`;
-}
-</script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      skidbin
+    </title>
+    <link rel="icon" href="/stuff/moon.png" type="image/png" />
+    <link rel="stylesheet" href="/stuff/styling/style.css" />
+    <meta property="og:title" content="Skidbin" />
+    <meta property="og:description" content="Ready to skid?" />
+    <meta property="og:url" content="https://skidbin.vercel.app/" />
+    <meta name="theme-color" content="#FFFFFF" />
+  </head>
+  <body>
+    <canvas id="sky">
+    </canvas>
+    <header class="topbar" role="banner">
+      <div class="title-text">
+        skidbin
+      </div>
+      <div class="flex-spacer">
+      </div>
+      <nav class="right-controls" role="navigation">
+        <a href="#" id="safety" tabindex="0">        Safety
+</a>
+        <a href="https://mega.nz/folder/ak5WhZpa#fAD6NBnZi9mfOT5UIeQWhA" target="_blank" rel="noopener" class="mega-link" tabindex="0">        Mega.nz
+</a>
+        <a href="https://discord.com/invite/skidding" target="_blank" rel="noopener" class="mega-link" tabindex="0">        Discord
+</a>
+        <!-- :p -->
+      </nav>
+    </header>
+    <main class="content" role="main" tabindex="0">
+      <ul id="file-list">
+        <li>
+          skidding..
+        </li>
+      </ul>
+      <footer>
+        <p>
+          <a href="https://mega.nz/folder/ak5WhZpa#fAD6NBnZi9mfOT5UIeQWhA" target="_blank" rel="noopener"></a>
+        </p>
+      </footer>
+    </main>
+    <script src="https://unpkg.com/megajs@1/dist/main.browser-umd.js">
+    </script>
+    <script defer="" src="/_vercel/insights/script.js">
+    </script>
+    <script src="/stuff/sky.js">
+    </script>
+    <script src="/stuff/filehandler.js">
+    </script>
+    <script>
+      document.getElementById(&#39;safety&#39;).addEventListener(&#39;click&#39;, (e) =&gt; {
+        e.preventDefault();
+        alert(&#34;\nplease dont run any prebuilt files and always check the projects for rats\n- none of the files have been checked\n\n89 was here....&#34;);
+      });
+    </script>
+  </body>
 </html>
