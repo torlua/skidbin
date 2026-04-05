@@ -4,170 +4,195 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RBXShare</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #0d0d0d;
-        color: #e6e6e6;
-    }
+body {
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    background: #0b0b0b;
+    color: #d0d0d0;
+}
 
-    /* Sidebar */
-    .sidebar {
-        position: fixed;
-        width: 220px;
-        height: 100%;
-        background: #111;
-        padding-top: 20px;
-        border-right: 1px solid #222;
-    }
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    width: 230px;
+    height: 100%;
+    background: #0f0f0f;
+    border-right: 1px solid #1f1f1f;
+}
 
-    .sidebar h2 {
-        text-align: center;
-        color: #fff;
-        margin-bottom: 20px;
-    }
+.logo {
+    padding: 18px;
+    font-size: 18px;
+    color: #fff;
+    border-bottom: 1px solid #1a1a1a;
+}
 
-    .sidebar a {
-        display: block;
-        padding: 12px 20px;
-        color: #ccc;
-        text-decoration: none;
-        transition: 0.2s;
-    }
+.nav a {
+    display: block;
+    padding: 12px 18px;
+    color: #888;
+    text-decoration: none;
+    font-size: 13px;
+}
 
-    .sidebar a:hover {
-        background: #1a1a1a;
-        color: #fff;
-    }
+.nav a:hover {
+    background: #151515;
+    color: #fff;
+}
 
-    /* Main Content */
-    .main {
-        margin-left: 220px;
-        padding: 20px;
-    }
+/* Main */
+.main {
+    margin-left: 230px;
+    padding: 20px;
+}
 
-    .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
 
-    .topbar input {
-        padding: 8px;
-        background: #111;
-        border: 1px solid #333;
-        color: #fff;
-        width: 250px;
-    }
+.search {
+    background: #0f0f0f;
+    border: 1px solid #1f1f1f;
+    padding: 8px;
+    color: #ccc;
+    width: 260px;
+}
 
-    .btn {
-        background: #1f1f1f;
-        border: 1px solid #333;
-        padding: 8px 14px;
-        color: #fff;
-        cursor: pointer;
-    }
+.button {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    padding: 8px 12px;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 12px;
+}
 
-    .btn:hover {
-        background: #2a2a2a;
-    }
+.button:hover {
+    color: #fff;
+    border-color: #444;
+}
 
-    /* File Cards */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-    }
+/* Table style like doxbin */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
 
-    .card {
-        background: #111;
-        padding: 15px;
-        border: 1px solid #222;
-        border-radius: 6px;
-        transition: 0.2s;
-    }
+.table th {
+    text-align: left;
+    padding: 10px;
+    color: #666;
+    border-bottom: 1px solid #1a1a1a;
+}
 
-    .card:hover {
-        border-color: #444;
-    }
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #111;
+}
 
-    .card h3 {
-        margin: 0 0 10px 0;
-        font-size: 16px;
-    }
+.table tr:hover {
+    background: #111;
+}
 
-    .card p {
-        font-size: 12px;
-        color: #aaa;
-    }
+/* Upload box */
+.upload {
+    margin-top: 25px;
+    border: 1px solid #1a1a1a;
+    background: #0f0f0f;
+    padding: 15px;
+}
 
-    .upload-box {
-        margin-top: 20px;
-        background: #111;
-        padding: 15px;
-        border: 1px solid #222;
-    }
+.input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #0b0b0b;
+    border: 1px solid #1f1f1f;
+    color: #ccc;
+}
 
-    textarea {
-        width: 100%;
-        height: 150px;
-        background: #0d0d0d;
-        border: 1px solid #333;
-        color: #fff;
-        padding: 10px;
-        resize: none;
-    }
+textarea {
+    width: 100%;
+    height: 160px;
+    background: #0b0b0b;
+    border: 1px solid #1f1f1f;
+    color: #ccc;
+    padding: 10px;
+    resize: none;
+}
 </style>
 </head>
+
 <body>
 
 <div class="sidebar">
-    <h2>RBXShare</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">My Files</a>
-    <a href="#">Upload</a>
-    <a href="#">Settings</a>
+    <div class="logo">RBXShare</div>
+    <div class="nav">
+        <a href="#">recent</a>
+        <a href="#">popular</a>
+        <a href="#">my files</a>
+        <a href="#">upload</a>
+    </div>
 </div>
 
 <div class="main">
-    <div class="topbar">
-        <input type="text" placeholder="Search scripts...">
-        <button class="btn">New Upload</button>
+
+    <div class="header">
+        <input class="search" placeholder="search...">
+        <button class="button">new</button>
     </div>
 
-    <div class="grid" id="fileGrid">
-        <div class="card">
-            <h3>Gun System.lua</h3>
-            <p>Uploaded by user123</p>
-        </div>
-        <div class="card">
-            <h3>Radio Script.lua</h3>
-            <p>Uploaded by devguy</p>
-        </div>
+    <table class="table" id="fileTable">
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>user</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>gun_system.lua</td>
+                <td>user123</td>
+                <td>today</td>
+            </tr>
+            <tr>
+                <td>radio_script.lua</td>
+                <td>devguy</td>
+                <td>today</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="upload">
+        <div style="margin-bottom:10px; color:#888;">upload script</div>
+        <input class="input" id="title" placeholder="title">
+        <textarea id="code" placeholder="paste lua code..."></textarea>
+        <button class="button" onclick="uploadScript()">upload</button>
     </div>
 
-    <div class="upload-box">
-        <h3>Upload Roblox Script</h3>
-        <input type="text" id="title" placeholder="Script Name" style="width:100%; margin-bottom:10px; padding:8px; background:#0d0d0d; border:1px solid #333; color:#fff;">
-        <textarea id="code" placeholder="Paste your Lua code here..."></textarea>
-        <button class="btn" onclick="uploadScript()">Upload</button>
-    </div>
 </div>
 
 <script>
 function uploadScript() {
     const title = document.getElementById('title').value;
-    const grid = document.getElementById('fileGrid');
+    const table = document.getElementById('fileTable').getElementsByTagName('tbody')[0];
 
-    if (!title) return alert('Enter a title');
+    if (!title) return alert('enter title');
 
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<h3>${title}</h3><p>Uploaded just now</p>`;
-
-    grid.prepend(card);
+    const row = table.insertRow(0);
+    row.innerHTML = `<td>${title}</td><td>you</td><td>now</td>`;
 }
 </script>
 
